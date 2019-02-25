@@ -1,0 +1,112 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://pet_putt_graphics_pack/putting_green.png" type="Texture" id=1]
+[ext_resource path="res://pet_putt_graphics_pack/wood_wall.png" type="Texture" id=2]
+[ext_resource path="res://Ball.gd" type="Script" id=3]
+[ext_resource path="res://pet_putt_graphics_pack/elephant.png" type="Texture" id=4]
+[ext_resource path="res://pet_putt_graphics_pack/cue_stick.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+extents = Vector2( 510.981, 15.5916 )
+
+[sub_resource type="CircleShape2D" id=2]
+
+radius = 16.4799
+
+[node name="Main" type="Node2D"]
+
+[node name="Background" type="Sprite" parent="."]
+scale = Vector2( 32.1634, 24.2308 )
+texture = ExtResource( 1 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TopWall" type="StaticBody2D" parent="."]
+position = Vector2( 16.5809, 16.0933 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="TopWall"]
+position = Vector2( 497.076, 0 )
+scale = Vector2( 32.0672, 1 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall"]
+position = Vector2( 493.075, 1 )
+shape = SubResource( 1 )
+
+[node name="BottomWall" type="StaticBody2D" parent="."]
+position = Vector2( 16.2263, 751.195 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="BottomWall"]
+position = Vector2( 497.076, 0 )
+scale = Vector2( 32.0672, 1 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall"]
+position = Vector2( 493.075, 1 )
+shape = SubResource( 1 )
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+position = Vector2( 13.2406, 19.4338 )
+rotation = 1.5708
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="LeftWall"]
+position = Vector2( 369.383, 0 )
+scale = Vector2( 24.0865, 1 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( 493.075, 1 )
+shape = SubResource( 1 )
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2( 1006.61, 10.9845 )
+rotation = 1.5708
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Sprite" type="Sprite" parent="RightWall"]
+position = Vector2( 369.383, 0 )
+scale = Vector2( 24.0865, 1 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+position = Vector2( 493.075, 1 )
+shape = SubResource( 1 )
+
+[node name="Ball" type="RigidBody2D" parent="."]
+position = Vector2( 542.629, 284.263 )
+gravity_scale = 0.0
+linear_damp = 0.65
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Ball"]
+scale = Vector2( 0.12, 0.12 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource( 2 )
+
+[node name="Cue" type="Sprite" parent="Ball"]
+texture = ExtResource( 5 )
+offset = Vector2( 200, 0 )
+
