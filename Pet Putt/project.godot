@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 go="*res://go.gd"
+global="*res://global.gd"
 
 [display]
 

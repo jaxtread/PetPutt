@@ -10,14 +10,19 @@ func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	self.look_at(get_global_mouse_position())
 	
 	if Input.is_action_just_pressed("launch_ball"):
 		
-		var differenceVector = get_global_mouse_position() - self.position
+		var differenceVector = self.position - get_global_mouse_position()
 		var directionVector = differenceVector.normalized()
-		var speed = 400
+		var speed = 1200
 		var launchVector = directionVector * speed
-	
-	pass
+		self.linear_velocity = launchVector
+
+func body_entered(otherBody):
+		if otherBody.name == "SwordArea":
+			go.destroy(self)
+		global.isGameOver = true
+		pass
